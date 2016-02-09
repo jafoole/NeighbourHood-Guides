@@ -26,6 +26,7 @@ public class NeighbourSQLiteOpenHelper extends SQLiteOpenHelper {
     public static final String COL_ADDRESS = "ADDRESS";
     public static final String COL_DESCRIPTION = "DESCRIPTION";
 
+
     public static final String[] NEIGHBOURHOOD_COLUMNS = {COL_ID, COL_LOCATION_NAME, COL_ADDRESS, COL_DESCRIPTION};
 
     private static final String CREATE_NEIGHBOURHOOD_GUIDES_TABLE =
@@ -34,7 +35,8 @@ public class NeighbourSQLiteOpenHelper extends SQLiteOpenHelper {
                     COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COL_LOCATION_NAME + " TEXT, " +
                     COL_ADDRESS + " TEXT, " +
-                    COL_DESCRIPTION + " TEXT )";
+                    COL_DESCRIPTION + " TEXT)";
+
 
     private static NeighbourSQLiteOpenHelper instance;
 
@@ -62,11 +64,13 @@ public class NeighbourSQLiteOpenHelper extends SQLiteOpenHelper {
     }
 
     //Add new itinerary list
-    public long addItem(String locationName, String description, String address){
+    public long addItem(String locationName, String description, String address, int favorites){
         ContentValues values = new ContentValues();
         values.put(COL_LOCATION_NAME, locationName);
         values.put(COL_DESCRIPTION, description);
         values.put(COL_ADDRESS, address);
+
+
 
         SQLiteDatabase db = this.getWritableDatabase();
         long returnId = db.insert(NEIGHBOURHOOD_TABLE_NAME, null, values);
@@ -105,8 +109,8 @@ public class NeighbourSQLiteOpenHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.query(NEIGHBOURHOOD_TABLE_NAME,
                 NEIGHBOURHOOD_COLUMNS,
-                COL_LOCATION_NAME + " LIKE ?",
-                new String[]{"%" + query + "%"},
+                COL_LOCATION_NAME + " LIKE ? OR " + COL_ADDRESS + " LIKE ? OR " + COL_DESCRIPTION + " LIKE ?",
+                new String[]{"%" + query + "%", "%" + query + "%", "%" + query + "%"},
                 null,
                 null,
                 null,

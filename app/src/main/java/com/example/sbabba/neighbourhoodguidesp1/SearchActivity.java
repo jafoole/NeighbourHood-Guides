@@ -5,6 +5,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
@@ -16,11 +17,14 @@ import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
+import android.support.design.widget.FloatingActionButton;
+
 
 
 import com.example.sbabba.neighbourhoodguidesp1.setup.DBAssetHelper;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
@@ -28,6 +32,9 @@ public class SearchActivity extends AppCompatActivity {
     private ListView mFavoritesListView;
     private CursorAdapter mCursorAdapter;
     private NeighbourSQLiteOpenHelper mHelper;
+    private int mRequestCode;
+
+
 
 
 
@@ -42,6 +49,7 @@ public class SearchActivity extends AppCompatActivity {
         dbSetup.getReadableDatabase();
 
 
+
         mHelper = NeighbourSQLiteOpenHelper.getInstance(SearchActivity.this);
 
 
@@ -49,6 +57,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
         Cursor cursor = null;//mHelper.getFavoritesList();
+
 
 
         mCursorAdapter = new SimpleCursorAdapter(this,android.R.layout.simple_list_item_1,cursor,new String[]{NeighbourSQLiteOpenHelper.COL_LOCATION_NAME},new int[]{android.R.id.text1},0);
@@ -90,7 +99,7 @@ public class SearchActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 Cursor cursor = mHelper.searchNeighbourHoodList(query);
                 mCursorAdapter.swapCursor(cursor);
-                Toast.makeText(SearchActivity.this, "You searched " +query, Toast.LENGTH_SHORT).show();
+                Toast.makeText(SearchActivity.this, "You searched " + query, Toast.LENGTH_SHORT).show();
 
 
                 return true;
@@ -105,6 +114,7 @@ public class SearchActivity extends AppCompatActivity {
 
         return true;
     }
+
 
 
 
