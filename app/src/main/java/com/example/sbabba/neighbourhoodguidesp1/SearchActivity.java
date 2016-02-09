@@ -36,9 +36,6 @@ public class SearchActivity extends AppCompatActivity {
 
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +53,9 @@ public class SearchActivity extends AppCompatActivity {
         mFavoritesListView = (ListView)findViewById(R.id.favoritesListView);
 
 
+//        Cursor cursor = mHelper.getFavoritesList();
         Cursor cursor = null;//mHelper.getFavoritesList();
+
 
 
 
@@ -114,7 +113,6 @@ public class SearchActivity extends AppCompatActivity {
 
         return true;
     }
-
 
 
 

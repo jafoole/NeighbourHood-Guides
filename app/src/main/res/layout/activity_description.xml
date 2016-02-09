@@ -5,14 +5,10 @@
     android:layout_height="match_parent"
     tools:context="com.example.sbabba.neighbourhoodguidesp1.DescriptionActivity">
 
-
-    <ImageView
+    <WebView
         android:id="@+id/locationImage"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:src="#0f00f0"
-        />
-
+        android:layout_height="190dp" />
 
 
     <TextView
