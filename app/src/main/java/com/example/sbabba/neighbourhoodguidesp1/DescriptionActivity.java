@@ -28,7 +28,7 @@ public class DescriptionActivity extends AppCompatActivity {
     SQLiteDatabase db;
     private boolean mFabFlag;
     RatingBar mRatingBar;
-    TextView mValueOfRating;
+//    TextView mValueOfRating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,7 @@ public class DescriptionActivity extends AppCompatActivity {
 
 
 
+        //This is getting the intent that was sent over from the previous page which was the SearchActivity.
         final int id = getIntent().getIntExtra("_id", -1);
 
 
@@ -81,7 +82,11 @@ public class DescriptionActivity extends AppCompatActivity {
                 fabButton.setImageResource(R.drawable.ic_favorite_border_white_24dp);
                 mFabFlag = false;
             };
+            //End of getting the Favorites and setting the image resource.
 
+
+
+            //If it has a Rating and that rating equals a certain number, the set the rating to that number.
             if (mHelper.getRating(id).equals("0.5")){
 //                mRatingBar.setNumStars(5);
                 mRatingBar.setRating(Float.parseFloat("0.5"));
@@ -122,14 +127,12 @@ public class DescriptionActivity extends AppCompatActivity {
 
                 mRatingBar.setRating(Float.parseFloat("5.0"));
             }
+            //End of getting the rating.
 
 
         }
 
-
-
-
-
+        //Floating acting button which updates the database every time that a user press the heart button.
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,6 +153,9 @@ public class DescriptionActivity extends AppCompatActivity {
             }
         });
 
+
+        //The rating button that updates the database every time somebody chooses a certain rating.
+        //The rating is a Float number.
         mRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
@@ -159,6 +165,7 @@ public class DescriptionActivity extends AppCompatActivity {
 //                mValueOfRating.setText(String.valueOf(rating));
             }
         });
+
 
     };
 

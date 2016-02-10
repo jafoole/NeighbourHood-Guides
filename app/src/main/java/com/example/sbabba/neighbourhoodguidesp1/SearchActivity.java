@@ -116,23 +116,13 @@ public class SearchActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Cursor cursor = mHelper.getFavoritesList();
+        mCursorAdapter.swapCursor(cursor);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 //    @Override
 //    protected void onNewIntent(Intent intent) {
 //        super.onNewIntent(intent);
