@@ -54,7 +54,9 @@ public class SearchActivity extends AppCompatActivity {
 
 
 //        Cursor cursor = mHelper.getFavoritesList();
-        Cursor cursor = null;//mHelper.getFavoritesList();
+//        Cursor cursor = //mHelper.getFavoritesList();
+        Cursor cursor = mHelper.getFavoritesList();
+
 
 
 

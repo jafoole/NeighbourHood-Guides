@@ -26,9 +26,10 @@ public class NeighbourSQLiteOpenHelper extends SQLiteOpenHelper {
     public static final String COL_DESCRIPTION = "DESCRIPTION";
     public static final String COL_FAVORITES = "FAVORITES";
     public static final String COL_IMAGE = "IMAGE";
+    public static final String COL_RATING = "RATING";
 
 
-    public static final String[] NEIGHBOURHOOD_COLUMNS = {COL_ID, COL_LOCATION_NAME, COL_ADDRESS, COL_DESCRIPTION, COL_FAVORITES,COL_IMAGE};
+    public static final String[] NEIGHBOURHOOD_COLUMNS = {COL_ID, COL_LOCATION_NAME, COL_ADDRESS, COL_DESCRIPTION, COL_FAVORITES,COL_IMAGE,COL_RATING};
 
     private static final String CREATE_NEIGHBOURHOOD_GUIDES_TABLE =
             "CREATE TABLE " + NEIGHBOURHOOD_TABLE_NAME +
@@ -38,6 +39,7 @@ public class NeighbourSQLiteOpenHelper extends SQLiteOpenHelper {
                     COL_ADDRESS + " TEXT, " +
                     COL_DESCRIPTION + " TEXT, " +
                     COL_FAVORITES + " TEXT, " +
+                    COL_RATING + " TEXT, " +
                     COL_IMAGE + " TEXT )";
 
 
@@ -202,21 +204,21 @@ public class NeighbourSQLiteOpenHelper extends SQLiteOpenHelper {
         }
     }
 
-//    public Cursor getFavoritesList() {
-//
-//        SQLiteDatabase db = this.getReadableDatabase();
-//
-//        Cursor cursor = db.query(NEIGHBOURHOOD_TABLE_NAME, // a. table
-//                NEIGHBOURHOOD_COLUMNS, // b. column names
-//                COL_FAVORITES,// c. selections
-//                null, // d. selections args
-//                null, // e. group by
-//                null, // f. having
-//                null, // g. order by
-//                null); // h. limit
-//
-//        return cursor;
-//    }
+    public Cursor getFavoritesList() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(NEIGHBOURHOOD_TABLE_NAME, // a. table
+                NEIGHBOURHOOD_COLUMNS, // b. column names
+                COL_FAVORITES,// c. selections
+                null, // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
+
+        return cursor;
+    }
 
     public String getImage(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -236,7 +238,26 @@ public class NeighbourSQLiteOpenHelper extends SQLiteOpenHelper {
         } else {
             return "Not Found";
         }
-
-
     }
-}
+
+
+        public String getRating(int id){
+            SQLiteDatabase db = this.getReadableDatabase();
+
+            Cursor cursor = db.query(NEIGHBOURHOOD_TABLE_NAME,
+                    new String[]{COL_RATING},
+                    COL_ID + " LIKE ?",
+                    new String[]{String.valueOf(id)},
+                    null,
+                    null,
+                    null,
+                    null
+            );
+            if (cursor.moveToFirst()){
+                return cursor.getString(cursor.getColumnIndex(COL_RATING));
+            }else {
+                return "Not Found";
+            }
+        }
+    }
+
