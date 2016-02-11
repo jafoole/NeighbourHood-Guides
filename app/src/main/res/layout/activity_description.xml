@@ -20,17 +20,16 @@
         android:layout_height="250dp" />
 
 
-
     <TextView
         android:id="@+id/locationName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name of Location"
         android:textSize="30sp"
+        android:layout_marginTop="28dp"
         android:layout_below="@+id/ratingBar"
-        android:layout_alignLeft="@+id/addressView"
-        android:layout_alignStart="@+id/addressView"
-        android:layout_marginTop="28dp" />
+        android:layout_alignLeft="@+id/description"
+        android:layout_alignStart="@+id/description" />
 
 
     <TextView
@@ -41,9 +40,17 @@
         android:textSize="18sp"
         android:autoLink="map"
         android:clickable="true"
-        android:layout_below="@+id/locationName"
-        android:layout_alignLeft="@+id/description"
-        android:layout_alignStart="@+id/description" />
+        android:layout_alignTop="@+id/imageView"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_map_black_24dp"
+            android:layout_below="@+id/locationName"
+            android:layout_alignLeft="@+id/locationName"
+            android:layout_alignStart="@+id/locationName"
+            android:id="@+id/imageView" />
 
     <TextView
         android:id="@+id/description"
@@ -56,7 +63,8 @@
         android:layout_below="@+id/addressView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="17dp" />
+        android:layout_marginTop="17dp"
+        />
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"

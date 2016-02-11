@@ -13,14 +13,19 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.CursorAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 import android.support.design.widget.FloatingActionButton;
 
 
-
+import com.daimajia.swipe.SimpleSwipeListener;
+import com.daimajia.swipe.SwipeLayout;
+import com.daimajia.swipe.adapters.SimpleCursorSwipeAdapter;
 import com.example.sbabba.neighbourhoodguidesp1.setup.DBAssetHelper;
 
 
@@ -30,10 +35,10 @@ import java.util.List;
 public class SearchActivity extends AppCompatActivity {
 
     private ListView mFavoritesListView;
-    private CursorAdapter mCursorAdapter;
     private NeighbourSQLiteOpenHelper mHelper;
     private int mRequestCode;
-
+    private Button mSwipeDelete;
+    private SwipeAdapter mSwipeAdapter;
 
 
     @Override
@@ -49,20 +54,18 @@ public class SearchActivity extends AppCompatActivity {
 
         mHelper = NeighbourSQLiteOpenHelper.getInstance(SearchActivity.this);
 
-
         mFavoritesListView = (ListView)findViewById(R.id.favoritesListView);
+//        mSwipeDelete = (ImageView)findViewById(R.id.swipeDelete);
 
-
+//
 //        Cursor cursor = mHelper.getFavoritesList();
-//        Cursor cursor = //mHelper.getFavoritesList();
-        Cursor cursor = mHelper.getFavoritesList();
-
-
-
-
-
-        mCursorAdapter = new SimpleCursorAdapter(this,android.R.layout.simple_list_item_1,cursor,new String[]{NeighbourSQLiteOpenHelper.COL_LOCATION_NAME},new int[]{android.R.id.text1},0);
-        mFavoritesListView.setAdapter(mCursorAdapter);
+//
+//
+//
+//
+//
+//       mSwipeAdapter = new SwipeAdapter(SearchActivity.this, cursor);
+//        mFavoritesListView.setAdapter(mSwipeAdapter);
 
 
 
@@ -71,7 +74,7 @@ public class SearchActivity extends AppCompatActivity {
         mFavoritesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Cursor cursor = mCursorAdapter.getCursor();
+                Cursor cursor = mSwipeAdapter.getCursor();
                 Intent intent = new Intent(SearchActivity.this, DescriptionActivity.class);
                 cursor.moveToPosition(position);
                 intent.putExtra("_id", cursor.getInt(cursor.getColumnIndex(NeighbourSQLiteOpenHelper.COL_ID)));
@@ -87,11 +90,14 @@ public class SearchActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.options_menu, menu);
 
         SearchManager searchManager = (SearchManager)getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView)menu.findItem(R.id.search).getActionView();
+        final SearchView searchView = (SearchView)menu.findItem(R.id.search).getActionView();
+
 
 
         ComponentName component = new ComponentName(this, SearchActivity.class);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(component));
+        searchView.getSuggestionsAdapter();
+
 
 
 //        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
@@ -99,16 +105,18 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 Cursor cursor = mHelper.searchNeighbourHoodList(query);
-                mCursorAdapter.swapCursor(cursor);
-                Toast.makeText(SearchActivity.this, "You searched " + query, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(SearchActivity.this, "You searched " + query, Toast.LENGTH_SHORT).show();
+                mSwipeAdapter.swapCursor(cursor);
+                searchView.clearFocus();
+
 
 
                 return true;
             }
 
             @Override
-            public boolean onQueryTextChange(String newText) {
-
+            public boolean onQueryTextChange(String query) {
+//                Cursor cursor = mHelper.searchNeighbourHoodList(query);
                 return false;
             }
         });
@@ -120,23 +128,11 @@ public class SearchActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Cursor cursor = mHelper.getFavoritesList();
-        mCursorAdapter.swapCursor(cursor);
+        mSwipeAdapter = new SwipeAdapter(SearchActivity.this, cursor);
+        mFavoritesListView.setAdapter(mSwipeAdapter);
+
+        mSwipeAdapter.swapCursor(cursor);
 
     }
-//    @Override
-//    protected void onNewIntent(Intent intent) {
-//        super.onNewIntent(intent);
-////        handleIntent(intent);
-//    }
-//
-//    public void handleIntent(Intent intent){
-//        if (Intent.ACTION_SEARCH.equals(intent.getAction())){
-//            String query = intent.getStringExtra(SearchManager.QUERY);
-//            Cursor cursor = mHelper.searchNeighbourHoodList(query);
-//            mCursorAdapter.swapCursor(cursor);
-//            Toast.makeText(SearchActivity.this, "searching test", Toast.LENGTH_SHORT).show();
-//
-//        }
-//    }
 }
 

@@ -115,8 +115,8 @@ public class NeighbourSQLiteOpenHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.query(NEIGHBOURHOOD_TABLE_NAME,
                 NEIGHBOURHOOD_COLUMNS,
-                COL_LOCATION_NAME + " LIKE ? OR " + COL_ADDRESS + " LIKE ? OR " + COL_DESCRIPTION + " LIKE ? OR " + COL_IMAGE + " LIKE ?",
-                new String[]{"%" + query + "%", "%" + query + "%", "%" + query + "%", "%" + query + "%"},
+                COL_LOCATION_NAME + " LIKE ? OR " + COL_ADDRESS + " LIKE ?",
+                new String[]{"%" + query + "%", "%" + query + "%"},
                 null,
                 null,
                 null,
