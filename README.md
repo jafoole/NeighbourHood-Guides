@@ -44,4 +44,4 @@ Example of the App.
 ----------------------
 Video of the app.
 
- http://tmblr.co/ZHdILx21eGt7E
+ https://youtu.be/JmjGqkxXpb0
