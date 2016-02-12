@@ -51,26 +51,13 @@ public class SearchActivity extends AppCompatActivity {
         dbSetup.getReadableDatabase();
 
 
-
+        //Reference to the open helper where the database is.
         mHelper = NeighbourSQLiteOpenHelper.getInstance(SearchActivity.this);
 
         mFavoritesListView = (ListView)findViewById(R.id.favoritesListView);
-//        mSwipeDelete = (ImageView)findViewById(R.id.swipeDelete);
 
-//
-//        Cursor cursor = mHelper.getFavoritesList();
-//
-//
-//
-//
-//
-//       mSwipeAdapter = new SwipeAdapter(SearchActivity.this, cursor);
-//        mFavoritesListView.setAdapter(mSwipeAdapter);
-
-
-
-//        handleIntent(getIntent());
-
+        //This onItemClickListener is for when you press a location on the list. It will direct you to the description of the list.
+        //We are passing the cursor over which includes the details of the location.
         mFavoritesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -84,6 +71,7 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
+    //Creating the searchView
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -100,12 +88,11 @@ public class SearchActivity extends AppCompatActivity {
 
 
 
-//        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 Cursor cursor = mHelper.searchNeighbourHoodList(query);
-//                Toast.makeText(SearchActivity.this, "You searched " + query, Toast.LENGTH_SHORT).show();
                 mSwipeAdapter.swapCursor(cursor);
                 searchView.clearFocus();
 
@@ -116,7 +103,6 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String query) {
-//                Cursor cursor = mHelper.searchNeighbourHoodList(query);
                 return false;
             }
         });
@@ -124,13 +110,13 @@ public class SearchActivity extends AppCompatActivity {
         return true;
     }
 
+    //This onResume is when we return to the Home Page (SearchActivity.this) it will display the favorite's list.
     @Override
     protected void onResume() {
         super.onResume();
         Cursor cursor = mHelper.getFavoritesList();
         mSwipeAdapter = new SwipeAdapter(SearchActivity.this, cursor);
         mFavoritesListView.setAdapter(mSwipeAdapter);
-
         mSwipeAdapter.swapCursor(cursor);
 
     }
