@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.sbabba.neighbourhoodguidesp1.SearchActivity">
+    tools:context="com.example.sbabba.neighbourhoodguidesp1.SearchActivity"
+    android:background="@drawable/homematerial">
 
 
     <TextView
@@ -19,7 +20,7 @@
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textColor="#00bcd4"/>
+        android:textColor="#f1ef6b"/>
 
         <!--What you want to show in SurfaceView-->
         <ListView
@@ -34,7 +35,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_sort_black_24dp"
+        android:src="@drawable/ic_sort_yellow_24dp"
         android:id="@+id/imageView2"
         android:layout_above="@+id/favoritesListView"
         android:layout_alignParentRight="true"
