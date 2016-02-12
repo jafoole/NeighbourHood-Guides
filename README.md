@@ -32,14 +32,10 @@ it will take you out of the current app and take you to the Google Maps app, and
 
 Example of the App.
 
-![Screenshots](Screenshots/HomeScreen.png) 
-![Screenshots](Screenshots/SearchScreen.png) 
-![Screenshots](Screenshots/SearchScreen1.png)
-![Screenshots](Screenshots/SearchPopulateScreen.png)
-![Screenshots](Screenshots/DescriptionScreen.png)
-![Screenshots](Screenshots/DeleteListItemScreen.png)
-![Screenshots](Screenshots/MapsDirectionPage.png)
+<img src="Screenshots/HomeScreen.png" height="500px"> <img src="Screenshots/SearchScreen.png" height="500px">
 
+<img src="Screenshots/SearchScreen1.png" height="500px"> <img src="Screenshots/SearchPopulateScreen.png" height="500px">
 
+<img src="Screenshots/DescriptionScreen.png" height="500px"> <img src="Screenshots/DeleteListItemScreen.png" height="500px">
 
-
+<img src="Screenshots/MapsDirectionPage.png" height="500px">
