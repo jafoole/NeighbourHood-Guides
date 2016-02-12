@@ -39,3 +39,9 @@ Example of the App.
 <img src="Screenshots/DescriptionScreen.png" height="500px"> <img src="Screenshots/DeleteListItemScreen.png" height="500px">
 
 <img src="Screenshots/MapsDirectionPage.png" height="500px">
+
+
+----------------------
+Video of the app.
+
+<div class="tumblr-post" data-href="https://embed.tumblr.com/embed/post/VO5RBa2le6wZYEzuZE-9yw/139188203982" data-did="1f0b3b888ff40fd1844933c6e5ca1a0d84bd90ca"><a href="http://sbabba.tumblr.com/post/139188203982/video-of-my-neighborhood-guides-app-for-android">http://sbabba.tumblr.com/post/139188203982/video-of-my-neighborhood-guides-app-for-android</a></div><script async src="https://secure.assets.tumblr.com/post.js"></script>
