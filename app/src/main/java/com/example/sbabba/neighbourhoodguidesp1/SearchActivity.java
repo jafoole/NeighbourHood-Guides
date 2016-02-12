@@ -40,6 +40,14 @@ public class SearchActivity extends AppCompatActivity {
     private Button mSwipeDelete;
     private SwipeAdapter mSwipeAdapter;
 
+  /*        /\      /\      __        _____              __                /\      /\
+            \ \    \ \     |__|____ _/ ____\____   ____ |  |   ____       / /     / /
+            \ \    \ \     |  \__  \\   __\/  _ \ /  _ \|  | _/ __ \     / /     / /
+            \ \    \ \     |  |/ __ \|  | (  <_> |  <_> )  |_\  ___/    / /     / /
+            \ \    \ \ /\__|  (____  /__|  \____/ \____/|____/\___  >  / /     / /
+            \/     \/  \______|    \/                             \/   \/      \/ */
+    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
