@@ -32,12 +32,6 @@ it will take you out of the current app and take you to the Google Maps app, and
 
 Example of the App.
 
-![Screenshots](Screenshots/device-2016-02-12-105859.png)
-![Screenshots](Screenshots/device-2016-02-12-110042.png)
-![Screenshots](Screenshots/device-2016-02-12-110105.png)
-![Screenshots](Screenshots/device-2016-02-12-110208.png)
-![Screenshots](Screenshots/device-2016-02-12-110234.png)
-![Screenshots](Screenshots/device-2016-02-12-110243.png)
-![Screenshots](Screenshots/device-2016-02-12-110327.png)
+
 
 
