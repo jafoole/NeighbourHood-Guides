@@ -57,8 +57,7 @@ public class DescriptionActivity extends AppCompatActivity {
         TextView descriptionTextView = (TextView) findViewById(R.id.description);
         FloatingActionButton fabButton = (FloatingActionButton) findViewById(R.id.fab);
         mRatingBar = (RatingBar) findViewById(R.id.ratingBar);
-//        mSearchListView = (ListView)findViewById(R.id.searchListView);
-//        mValueOfRating = (TextView)findViewById(R.id.valueOfRating);
+
 
 
         //This is getting the intent that was sent over from the previous page which was the SearchActivity.
@@ -85,6 +84,7 @@ public class DescriptionActivity extends AppCompatActivity {
                 fabButton.setImageResource(R.drawable.ic_favorite_white_24dp);
                 mFabFlag = true;
             }
+
             //If it is NOT a favorite, it will NOT add the image resource
             else {
                 fabButton.setImageResource(R.drawable.ic_favorite_border_white_24dp);
@@ -128,10 +128,9 @@ public class DescriptionActivity extends AppCompatActivity {
         mRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-//                Toast.makeText(DescriptionActivity.this, "Rating Added", Toast.LENGTH_SHORT).show();
                 SQLiteDatabase db = mHelper.getWritableDatabase();
                 db.execSQL("UPDATE NeighbourHood_Table SET RATING = " + rating + " WHERE _id = " + id);
-//                mValueOfRating.setText(String.valueOf(rating));
+
             }
         });
     }

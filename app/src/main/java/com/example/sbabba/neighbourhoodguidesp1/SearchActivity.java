@@ -46,7 +46,7 @@ public class SearchActivity extends AppCompatActivity {
             \ \    \ \     |  |/ __ \|  | (  <_> |  <_> )  |_\  ___/    / /     / /
             \ \    \ \ /\__|  (____  /__|  \____/ \____/|____/\___  >  / /     / /
             \/     \/  \______|    \/                             \/   \/      \/ */
-    
+
 
 
     @Override

@@ -76,7 +76,8 @@
         android:layout_alignBottom="@+id/ratingBar"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="28dp" />
+        android:layout_marginBottom="28dp"
+        />
 
     <RatingBar
         android:layout_width="wrap_content"
