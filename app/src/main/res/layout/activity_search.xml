@@ -20,7 +20,8 @@
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textColor="#f1ef6b"/>
+        android:textColor="#f1ef6b"
+        android:contentDescription="This is the name of the screen. "/>
 
         <!--What you want to show in SurfaceView-->
         <ListView
@@ -30,7 +31,8 @@
             android:footerDividersEnabled="false"
             android:layout_below="@+id/textView"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:contentDescription="This is the list of Favorites."/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -39,7 +41,8 @@
         android:id="@+id/imageView2"
         android:layout_above="@+id/favoritesListView"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:contentDescription="Swipe to delete image."/>
 
 
 </RelativeLayout>
